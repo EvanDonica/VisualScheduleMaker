@@ -4,11 +4,11 @@ import (
 	"net/http"
 )
 
-func helloHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Hello, World!"))
+func homeHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Visual Schedule Maker"))
 }
 
 func main() {
-	http.HandleFunc("/hello", helloHandler)
+	http.HandleFunc("/home", homeHandler)
 	http.ListenAndServe(":8080", nil)
 }

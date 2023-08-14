@@ -1,14 +1,19 @@
 package main
 
 import (
+	"backend/handlers"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
-func homeHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Visual Schedule Maker"))
-}
-
 func main() {
-	http.HandleFunc("/home", homeHandler)
+	r := mux.NewRouter()
+
+	r.HandleFunc("/", handlers.HomeHandler)
+
+	http.Handle("/", r)
+
+	// Replace 8080 with the desired port number
 	http.ListenAndServe(":8080", nil)
 }

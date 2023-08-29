@@ -3,7 +3,6 @@ package main
 import (
 	"backend/handlers"
 	"net/http"
-
 	"github.com/gorilla/mux"
 )
 

@@ -1,14 +1,18 @@
 package main
 
 import (
+	"backend/handlers"
 	"net/http"
+	"github.com/gorilla/mux"
 )
 
-func helloHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Hello, World!"))
-}
-
 func main() {
-	http.HandleFunc("/hello", helloHandler)
+	r := mux.NewRouter()
+
+	r.HandleFunc("/", handlers.HomeHandler)
+
+	http.Handle("/", r)
+
+	// Replace 8080 with the desired port number
 	http.ListenAndServe(":8080", nil)
 }
